@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useDashboard } from "../../hook/useDashboard";
+// import { useDashboard } from "../../hook/useDashboard";
 import { EntryProps } from "../../@types/entry";
 import CreateEntry from "../../components/createEntry";
 
 const Dashboard = () => {
-    const dashboardService = useDashboard();
+    // const dashboardService = useDashboard();
     const [bonusEntries, setBonusEntries] = useState<EntryProps[]>([]);
     const [onusEntries, setOnusEntries] = useState<EntryProps[]>([]);
 
