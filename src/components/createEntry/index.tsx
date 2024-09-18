@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { EntryProps } from "../../@types/entry"
+import "./styles.css";
 
 type CreateEntryProps = {
     createEntry: (entry: EntryProps) => void;

@@ -1,7 +1,8 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, } from 'react-router-dom';
+import Home from './pages/home';
+import Dashboard from './pages/dashborad';
+import Sobre from './pages/sobre';
 
 function App() {
   const renderButtons = () => {
@@ -12,14 +13,20 @@ function App() {
             <li><Link to="/">Home</Link></li>
             <li><Link to="dashboard">Dashboard</Link></li>
             <li><Link to="/sobre">About</Link></li>
-            <li><Link to="/login">LogIn</Link></li>
           </ul>
         </nav>
       </div>
     )
   }
   return (
-   <div></div>
+    <Router>
+      {renderButtons()}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/sobre" element={<Sobre />} />
+      </Routes>
+    </Router>
   )
 }
 
