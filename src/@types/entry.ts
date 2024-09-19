@@ -3,5 +3,4 @@ export type EntryProps = {
     description: string,
     amount: number,
     isBonus: boolean,
-    date: Date
 }

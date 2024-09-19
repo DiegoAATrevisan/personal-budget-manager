@@ -1,54 +1,38 @@
-import { useState } from 'react';
-import { EntryProps } from '../../@types/entry';
+import { useEffect, useState } from "react";
+import { EntryProps } from "../../@types/entry"
 import './styles.css';
 
 type CreateEntryProps = {
-    createEntry: (entry: Omit<EntryProps, 'id'>) => void;
-};
+    createEntry: (entry: EntryProps) => void;
+}
 
-const CreateEntry: React.FC<CreateEntryProps> = ({ createEntry }) => {
-    const [description, setDescription] = useState('');
-    const [amount, setAmount] = useState('');
-    const [date, setDate] = useState('');
+const CreateEntry = ({ createEntry }: CreateEntryProps) => {
+    const [getEntry, setEntry] = useState<EntryProps>({ id: 0, description: "", amount: 0, isBonus: false });
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        createEntry({
-            description,
-            amount: parseFloat(amount),
-            isBonus: false,
-            date: new Date(date),
-        });
-        setDescription('');
-        setAmount('');
-        setDate('');
-    };
+    useEffect(() => { }, [getEntry])
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(e) => {
+            e.preventDefault();
+            createEntry(getEntry);
+            setEntry({ id: 0, description: "", amount: 0, isBonus: false });
+        }}>
             <input
                 type="text"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
                 placeholder="Descrição"
-                required
+                value={getEntry.description}
+                onChange={(e) => setEntry({ ...getEntry, description: e.target.value })}
             />
             <input
                 type="number"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
                 placeholder="Valor"
-                required
-            />
-            <input
-                type="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                required
+                value={getEntry.amount}
+                onChange={(e) => setEntry({ ...getEntry, amount: parseFloat(e.target.value) })}
             />
             <button className="button-19" type="submit">Adicionar</button>
         </form>
-    );
-};
+    )
+
+}
 
 export default CreateEntry;
