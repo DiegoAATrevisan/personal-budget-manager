@@ -7,7 +7,7 @@ type CreateEntryProps = {
 }
 
 const CreateEntry = ({ createEntry }: CreateEntryProps) => {
-    const [getEntry, setEntry] = useState<EntryProps>({ id: 0, description: "", amount: 0 });
+    const [getEntry, setEntry] = useState<EntryProps>({ id: 0, description: "", amount: 0, isBonus: false });
 
     useEffect(() => { }, [getEntry])
 
@@ -15,7 +15,7 @@ const CreateEntry = ({ createEntry }: CreateEntryProps) => {
         <form onSubmit={(e) => {
             e.preventDefault();
             createEntry(getEntry);
-            setEntry({ id: 0, description: "", amount: 0 });
+            setEntry({ id: 0, description: "", amount: 0, isBonus: false });
         }}>
             <input
                 type="text"
