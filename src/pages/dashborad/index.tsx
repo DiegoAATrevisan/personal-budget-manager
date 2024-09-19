@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // import { useDashboard } from "../../hook/useDashboard";
 import { EntryProps } from "../../@types/entry";
 import CreateEntry from "../../components/createEntry";
+import './styles.css';
 
 const Dashboard = () => {
     // const dashboardService = useDashboard();
     const [bonusEntries, setBonusEntries] = useState<EntryProps[]>([]);
     const [onusEntries, setOnusEntries] = useState<EntryProps[]>([]);
+    const [isUpdated, setIsUpdated] = useState(false);
 
     const createBonusEntry = (entry: EntryProps) => {
         const newEntry = { ...entry, id: Date.now(), amount: Math.abs(entry.amount) };
@@ -20,13 +22,18 @@ const Dashboard = () => {
 
     const totalAmount = [...bonusEntries, ...onusEntries].reduce((total, entry) => total + entry.amount, 0);
 
+    useEffect(() => {
+      setIsUpdated(true);
+      const timer = setTimeout(() => setIsUpdated(false), 500);
+      return () => clearTimeout(timer);
+    }, [totalAmount]);
+
     return (
-        <div>
+        <div className="page-content">
             <h1>Dashboard</h1>
-            <div className="totalAmount">
+            <div className={`totalAmount ${isUpdated ? 'updated' : ''}`}>
                 Total Amount: ${totalAmount.toFixed(2)}
-            </div>
-            <div className="entriesContainer">
+            </div>            <div className="entriesContainer">
                 <div className="onusEntries">
                     <h2>Onus Entries</h2>
                     <ul>

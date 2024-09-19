@@ -1,0 +1,30 @@
+.page-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding-top: 80px;
+}
+
+.page-content>* {
+    width: 80%;
+    max-width: 800px;
+}
+
+#perfil {
+    width: 10%;  /* Adjust this value to match the previous size */
+    height: auto;
+}
+
+.All {
+  background-color: #f0f9ff;
+}
+
+.name, .work, .biography {
+  color: #1e3a8a;
+}
+
+a {
+  color: #3b82f6;
+}

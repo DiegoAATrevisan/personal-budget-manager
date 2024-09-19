@@ -14,10 +14,10 @@ function App() {
     return (
       <div>
         <nav>
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="dashboard">Dashboard</Link></li>
-            <li><Link to="/sobre">About</Link></li>
+          <ul className='navbar'>
+            <button className='btn'><Link to="/">Home</Link></button>
+            <button className='btn'><Link to="dashboard">Dashboard</Link></button>
+            <button className='btn'><Link to="/sobre">About</Link></button> 
           </ul>
         </nav>
       </div>

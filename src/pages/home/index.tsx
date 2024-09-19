@@ -1,7 +1,10 @@
+import './styles.css';
+
 const Home = ()=>{
     return(
-        <div>
+        <div className='page-content'>
             <h1>Home</h1>
+            <p>TESTE</p>
         </div>
     )
 }
