@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { EntryProps } from "../../@types/entry"
+import './styles.css';
 
 type CreateEntryProps = {
     createEntry: (entry: EntryProps) => void;
@@ -28,7 +29,7 @@ const CreateEntry = ({ createEntry }: CreateEntryProps) => {
                 value={getEntry.amount}
                 onChange={(e) => setEntry({ ...getEntry, amount: parseFloat(e.target.value) })}
             />
-            <button type="submit">Adicionar</button>
+            <button className="button-19" type="submit">Adicionar</button>
         </form>
     )
 
